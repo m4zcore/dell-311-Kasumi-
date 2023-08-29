@@ -1,0 +1,67 @@
+For Dell 311 (KAsumi)
+working for :
+Linux Mint 21.2 "Victoria" Cinnamon Edition
+Linux Mint 21.2 "Victoria" Xfce Edition
+
+
+Before you start just remember that you kernel is not
+yet eMMc patched .. so you have to cold boot on before
+you boot on vmlinuz-6.4.3-dirty ..
+for cold : boot just just hook up power button fo 10 sec.
+
+enjoy :
+
+
+Download files from :
+
+https://tree123.org/
+
+https://tree123.org/files/stoney-emmcfix.tar.gz
+
+-============================================================-
+
+Open a Session (Terminal)
+
+Browse where you extracted your files and go
+in the extracted folder: ( ~/stoney )
+Type this:
+
+sudo su
+cp vmlinuz /boot/vmlinuz-6.4.3-dirty
+cp -r modules/lib/modules/6.4.3-dirty /lib/modules
+update-initramfs -k 6.4.3-dirty -c
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+exit su mode
+exit
+
+-============================================================-
+
+install & coordinate audio profile
+return to temp folder
+install git if not installed ( sudo apt install git )
+
+git clone https://github.com/WeirdTreeThing/chromebook-linux-audio
+cd chromebook-linux-audio
+./setup-audio
+
+-============================================================-
+
+instal grub custumizer
+
+sudo add-apt-repository ppa:trebelnik-stefina/grub-customizer
+sudo apt update
+sudo apt install grub-customizer
+
+run : grub-customizer
+
+
+select vmlinuz-6.4.3-dirty for firstboot
+
+click on vmlinuz-6.4.3-dirty and then click on the up-arrow
+to put it in first place.
+Save & reboot
+
+-============================================================-
+
+audio should work on your Acer 311 (Kasumi)
